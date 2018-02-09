@@ -40,11 +40,23 @@ define([], function(){
         var buttonElem = $(commContainerElemId + " > .btn-" + action);
         buttonElem.removeClass("btn-info");
         if (action == "accept") {
-          buttonElem.addClass("btn-success");
+          $(commContainerElemId + " > .btn").addClass('hidden');
+          $(commContainerElemId + " > div").addClass('text-success').removeClass('hidden')
+            .html('<i class="fa fa-check"></i> Accepted');
         } else if (action == "reject") {
-          buttonElem.addClass("btn-danger");
+          $(commContainerElemId + " > .btn").addClass("hidden");
+          $(commContainerElemId + " > div").addClass('text-success').removeClass('hidden')
+            .html('<i class="fa fa-check"></i> Rejected');
         } else if (action == "remove") {
-          buttonElem.addClass("btn-danger");
+            $(commContainerElemId + " > .btn").addClass("hidden");
+            $(commContainerElemId + " > div").addClass('text-success').removeClass('hidden')
+              .html('<i class="fa fa-check"></i> Removed');
+        }
+      },
+      error: function(result, status, xhr) {
+        if (action == "accept" || action == "reject" || action == "remove") {
+          $(commContainerElemId + " > .btn").addClass('hidden');
+          $(commContainerElemId + " > div").addClass('text-danger').removeClass('hidden').text('An error occurred');
         }
       }
     });

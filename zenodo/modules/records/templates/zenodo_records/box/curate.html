@@ -27,18 +27,19 @@
       {%- for comm in pending_comms|sort(attribute='title') %}
         <dd>
         <span class="pull-right" id="span-comm-{{ comm.id }}">
-        <button class="btn-accept btn btn-xs btn-info"
-                type="button"
-                action="accept"
-                commId="{{ comm.id }}"
-                endpoint="{{url_for('zenodo_communities.curate', community_id=comm.id)}}"
-                recid="{{record.recid}}"><i class="fa fa-check"></i> Accept</button>
-        <button class="btn-reject btn btn-xs btn-info"
-                type="button"
-                action="reject"
-                commId="{{ comm.id }}"
-                endpoint="{{url_for('zenodo_communities.curate', community_id=comm.id)}}"
-                recid="{{record.recid}}"><i class="fa fa-times"></i> Reject</button>
+          <div class="hidden"></div>
+          <button class="btn-accept btn btn-xs btn-info"
+                  type="button"
+                  action="accept"
+                  commId="{{ comm.id }}"
+                  endpoint="{{url_for('zenodo_communities.curate', community_id=comm.id)}}"
+                  recid="{{record.recid}}"><i class="fa fa-check"></i> Accept</button>
+          <button class="btn-reject btn btn-xs btn-info"
+                  type="button"
+                  action="reject"
+                  commId="{{ comm.id }}"
+                  endpoint="{{url_for('zenodo_communities.curate', community_id=comm.id)}}"
+                  recid="{{record.recid}}"><i class="fa fa-times"></i> Reject</button>
         </span>
         {{ comm.title }}
         </dd>
